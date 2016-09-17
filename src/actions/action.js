@@ -1,10 +1,18 @@
-const requestData = () => {
-    return {type: 'REQUEST_INITIAL_DATA'}
+const displayData = (data) => {
+    data = JSON.parse(data)
+    return {
+        type: 'DATA_RECEIVED',
+        data
+    }
 }
 
 export const getData = () => {
     return (dispatch) => {
-        dispatch(requestData())
-        //Code Lives Here to dispatch
+        fetch('http://localhost:3000/data/', {
+          mode: 'cors',
+          method: 'GET'
+        })
+          .then(r => r.text())
+          .then(data => dispatch(displayData(data)))
     }
 }

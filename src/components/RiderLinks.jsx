@@ -6,7 +6,19 @@ class RiderLinks extends React.Component {
     }
     render() {
         return (
-            <div> Link WAill Goo Here</div>
+            <div>
+                <ul>
+                    {this.props.data.map((designations, index) => {
+                        return (
+                            <li key={"a"+index}>
+                                <a key={index}
+                                    href={"https://www.google.com/maps/place/"+designations.end_lat+","+designations.end_lon}
+                                >{designations.end_lat}, {designations.end_lon} </a>
+                            </li>
+                        )
+                   })}
+                </ul>
+            </div>
         )
     }
 }

@@ -5,7 +5,7 @@ import rootReducer from '../reducers/index';
 
 const initialState = {
     IndegoData: {
-        data: false
+        data: []
     }
 }
 

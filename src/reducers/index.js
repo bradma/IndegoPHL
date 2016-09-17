@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import IndegoData from './reducer';
 
 const rootReducer = combineReducers({
-   IndegoData 
+   IndegoData
 })
 
 export default rootReducer
