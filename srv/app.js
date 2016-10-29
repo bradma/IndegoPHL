@@ -14,8 +14,24 @@ app.use(function(req, res, next) {
 app
     .get('/data/', function(req, res) {
         IndegoSource.gatherData().then(function(data){
-            res.json(data);
+            let total = data.length,
+                size = 20,
+                pageTotal = data.length/20,
+                currentPage = 1,
+                paginatedData = [];
+
+            while (data.length > 0)
+                paginatedData.push(data.splice(0, size))
+            ///?page=2
+            if (typeof req.query.page !== 'undefined')
+                currentPage = +req.query.page
+
+            let response = paginatedData[currentPage - 1];
+            res.status(200).json(response)
         });
     });
 
-app.listen(3000, function() { })
+let server = app.listen(3000, function() {
+    console.log('Listening on port %d', server.address().port)
+    console.log('Use endpoint /data/')
+})

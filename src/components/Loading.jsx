@@ -6,7 +6,7 @@ class Loading extends React.Component {
     }
     render() {
         return (
-            <div> Loading Data ... </div>
+            <div><i className="fa fa-circle-o-notch fa-spin" aria-hidden="true">Loading Data ...</i></div>
         )
     }
 }
